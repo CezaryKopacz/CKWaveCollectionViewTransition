@@ -3,7 +3,9 @@
 This is a cool custom transition between two or more UICollectionViewControllers with wave like cell animation.
 Could be used in e.g. galleries.
 
-![anim.gif](https://bitbucket.org/repo/bdbxyL/images/1848372571-anim.gif)
+![anim.gif](http://i.giphy.com/3o85xyoYepG177Bhte.gif)
+
+Animation idea was taken from [Łukasz Frankiewicz](http://twitter.com/almetien) [Dribble project](https://dribbble.com/shots/2044312-Bits-and-pixels-Tide-Transition)
 
 ## Installation
 
@@ -54,21 +56,20 @@ func navigationController(navigationController: UINavigationController, animatio
 
 
 ```swift
-internal let animationDuration = 1.0
+internal let animationDuration: Double! = 1.0
 ```
-
 
 Total animation duration
    
 ```swift
-internal let kCellAnimSmallDelta: Double = 0.01
+internal let kCellAnimSmallDelta: Double! = 0.01
 ```
  
 Small delay between cell animations
 
 
 ```swift
-internal let kCellAnimBigDelta: Double = 0.03
+internal let kCellAnimBigDelta: Double! = 0.03
 ```
 
 Big delay between cell animations
