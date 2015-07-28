@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/CezaryKopacz/CKWaveCollectionViewTransition"
   s.license      = { :type => "MIT" }
   s.author       = { "Cezary Kopacz" => "salvation.sv@gmail.com" }
-  s.source       = { :git => "https://github.com/CezaryKopacz/CKWaveCollectionViewTransition.git" }
+  s.source       = { :git => "https://github.com/CezaryKopacz/CKWaveCollectionViewTransition.git", :tag => "1.0.0" }
   s.source_files  = "Classes", "Classes/**/*.{swift}"
-  s.ios.deployment_target = "7.0"
+  s.ios.deployment_target = "8.0"
 end
