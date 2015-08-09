@@ -3,7 +3,7 @@
 This is a cool custom transition between two or more UICollectionViewControllers with wave like cell animation.
 Could be used in e.g. galleries.
 
-![anim.gif](http://i.giphy.com/3o85xyoYepG177Bhte.gif)
+![anim.gif](https://github.com/CezaryKopacz/CKWaveCollectionViewTransition/anim.gif)
 
 Animation idea was taken from [Łukasz Frankiewicz](http://twitter.com/almetien) [Dribble project](https://dribbble.com/shots/2044312-Bits-and-pixels-Tide-Transition)
 
@@ -18,15 +18,15 @@ There are two options:
 
 * In storyboard add object in your NavigationController.
 
-![object.jpg](https://bitbucket.org/repo/bdbxyL/images/476354846-object.jpg)
+![object.jpg](https://github.com/CezaryKopacz/CKWaveCollectionViewTransition/usage1.jpg)
 
 * Set it's class to NavigationControllerDelegate
 
-![objectCustomClass.jpg](https://bitbucket.org/repo/bdbxyL/images/3022245965-objectCustomClass.jpg)
+![objectCustomClass.jpg](https://github.com/CezaryKopacz/CKWaveCollectionViewTransition/usage2.jpg)
 
 * Set NavigationController delegate to this object.
 
-![navigationControllerDelegateObject.jpg](https://bitbucket.org/repo/bdbxyL/images/3403085542-navigationControllerDelegateObject.jpg)
+![navigationControllerDelegateObject.jpg](https://github.com/CezaryKopacz/CKWaveCollectionViewTransition/usage3.jpg)
 
 or 
 
