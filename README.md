@@ -48,8 +48,17 @@ func navigationController(navigationController: UINavigationController, animatio
     }
 ```
 
+ * The last thing you have to set is self.selectedIndexPath property in your didSelectItemAtIndexPath method implementation.
 
 
+```swift
+override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        self.selectedIndexPath = indexPath
+...
+
+}
+```
 
 
 ## Properties

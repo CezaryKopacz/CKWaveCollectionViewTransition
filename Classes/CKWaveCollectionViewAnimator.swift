@@ -234,6 +234,8 @@ class CKWaveCollectionViewAnimator: NSObject, UIViewControllerAnimatedTransition
     }
     
     private func enumerateVisibleCellsAndAddAnimations(destinationPoint: CGPoint, sourceCollectionViewController: UICollectionViewController, destinationCollectionViewController: UICollectionViewController) {
+
+        assert(destinationCollectionViewController.selectedIndexPath != nil, "Forgot to set selectedIndexPath property?")
         
         var sourceIndexPathsForVisibleCells = sourceCollectionViewController.collectionView?.indexPathsForVisibleItems() as? Array<NSIndexPath>
         sourceIndexPathsForVisibleCells!.sort({ $0.row < $1.row })
