@@ -14,7 +14,7 @@ class CKWaveCollectionViewAnimator: NSObject, UIViewControllerAnimatedTransition
     
     internal var reversed: Bool = false
     
-    internal let animationDuration: Double! = 1.0
+    internal var animationDuration: Double! = 1.0
     internal let kCellAnimSmallDelta: Double! = 0.01
     internal let kCellAnimBigDelta: Double! = 0.03
     
