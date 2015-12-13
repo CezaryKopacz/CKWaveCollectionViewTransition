@@ -19,7 +19,7 @@ extension UICollectionViewController {
             return objc_getAssociatedObject(self, &selectedIndexPathAssociationKey) as? NSIndexPath
         }
         set(newValue) {
-            objc_setAssociatedObject(self, &selectedIndexPathAssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
+            objc_setAssociatedObject(self, &selectedIndexPathAssociationKey, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
     }
     
@@ -30,7 +30,7 @@ extension UICollectionViewController {
         }
         set(newValue) {
             let value = NSValue(CGPoint: newValue)
-            objc_setAssociatedObject(self, &fromPointAssociationKey, value, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
+            objc_setAssociatedObject(self, &fromPointAssociationKey, value, .OBJC_ASSOCIATION_RETAIN)
         }
     }
 }

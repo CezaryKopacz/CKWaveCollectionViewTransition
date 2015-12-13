@@ -14,6 +14,7 @@ class NavigationControllerDelegate : NSObject, UINavigationControllerDelegate {
         fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
             
             let animator = CKWaveCollectionViewAnimator()
+            animator.animationDuration = 0.7
             
             if operation != UINavigationControllerOperation.Push {
                 

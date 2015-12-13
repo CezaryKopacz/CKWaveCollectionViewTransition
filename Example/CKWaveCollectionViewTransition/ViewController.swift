@@ -18,14 +18,14 @@ class ViewController: UICollectionViewController {
         
         self.selectedIndexPath = indexPath
         
-        var vc = self.storyboard?.instantiateViewControllerWithIdentifier(kSecondVCId) as? SecondCollectionViewController
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier(kSecondVCId) as? SecondCollectionViewController
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     //MARK :- UICollectionViewDataSource
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellId, forIndexPath: indexPath) as! UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellId, forIndexPath: indexPath) 
         return cell
     }
     
