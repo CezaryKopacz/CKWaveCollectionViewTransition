@@ -16,7 +16,7 @@ extension UIViewController {
         
         var navigationBarVisible = true
         if let navigationController = self.navigationController {
-            navigationBarVisible = !navigationController.navigationBarHidden
+            navigationBarVisible = !navigationController.isNavigationBarHidden
         }
         
         return navigationBarVisible ? kNavigationBarHeight : 0

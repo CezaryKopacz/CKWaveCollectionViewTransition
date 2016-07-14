@@ -24,10 +24,10 @@ extension UICollectionView {
                 currentWidth += cell.frame.size.width
                 if rows == 1 { //we only care about first row
                     
-                    columns++
+                    columns += 1
                 }
             } else {
-                rows++
+                rows += 1
                 currentWidth = cell.frame.size.width
             }
         }
