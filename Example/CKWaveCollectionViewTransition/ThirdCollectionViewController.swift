@@ -13,24 +13,24 @@ class ThirdCollectionViewController: UICollectionViewController {
     let kCellId = "cellId"
     
     //MARK :- UICollectionViewDelegate
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         self.selectedIndexPath = indexPath
     }
     
     //MARK :- UICollectionViewDataSource
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellId, forIndexPath: indexPath) 
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCellId, for: indexPath) 
         
         return cell
     }
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 100
     }
     
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }    
 }

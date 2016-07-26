@@ -14,9 +14,9 @@ private var fromPointAssociationKey: UInt8 = 1
 
 extension UICollectionViewController {
     
-    var selectedIndexPath: NSIndexPath! {
+    var selectedIndexPath: IndexPath! {
         get {
-            return objc_getAssociatedObject(self, &selectedIndexPathAssociationKey) as? NSIndexPath
+            return objc_getAssociatedObject(self, &selectedIndexPathAssociationKey) as? IndexPath
         }
         set(newValue) {
             objc_setAssociatedObject(self, &selectedIndexPathAssociationKey, newValue, .OBJC_ASSOCIATION_RETAIN)
@@ -26,10 +26,10 @@ extension UICollectionViewController {
     var fromPoint: CGPoint! {
         get {
             let value = objc_getAssociatedObject(self, &fromPointAssociationKey) as? NSValue
-            return value!.CGPointValue()
+            return value!.cgPointValue()
         }
         set(newValue) {
-            let value = NSValue(CGPoint: newValue)
+            let value = NSValue(cgPoint: newValue)
             objc_setAssociatedObject(self, &fromPointAssociationKey, value, .OBJC_ASSOCIATION_RETAIN)
         }
     }
