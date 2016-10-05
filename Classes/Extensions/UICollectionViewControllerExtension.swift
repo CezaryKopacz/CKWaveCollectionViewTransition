@@ -26,7 +26,7 @@ extension UICollectionViewController {
     var fromPoint: CGPoint! {
         get {
             let value = objc_getAssociatedObject(self, &fromPointAssociationKey) as? NSValue
-            return value!.cgPointValue()
+            return value!.cgPointValue
         }
         set(newValue) {
             let value = NSValue(cgPoint: newValue)

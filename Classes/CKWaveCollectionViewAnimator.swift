@@ -32,11 +32,11 @@ class CKWaveCollectionViewAnimator: NSObject, UIViewControllerAnimatedTransition
         var destinationCollectionViewController: UICollectionViewController!
         var sourceCollectionViewController: UICollectionViewController!
         
-        let fromViewController = transitionContext.viewController(forKey: UITransitionContextFromViewControllerKey)!
-        let toViewController = transitionContext.viewController(forKey: UITransitionContextToViewControllerKey)!
-        let container = transitionContext.containerView()
+        let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
+        let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
+        let container = transitionContext.containerView
         
-        container.backgroundColor = .clear()
+        container.backgroundColor = UIColor.clear
 
         destinationCollectionViewController = toViewController as? UICollectionViewController
         assert(destinationCollectionViewController != nil, "Destination view controller is not a UICollectionViewController subclass!")
@@ -86,7 +86,7 @@ class CKWaveCollectionViewAnimator: NSObject, UIViewControllerAnimatedTransition
                     
                     }) { (finished) -> Void in
                         
-                        transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+                        transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
                 }
                 
                 self.addAnimationsToDestinationCollectionView(destinationCollectionViewController, sourceCollectionViewController: sourceCollectionViewController, toViewController: toViewController)
@@ -102,12 +102,12 @@ class CKWaveCollectionViewAnimator: NSObject, UIViewControllerAnimatedTransition
                 
                 UIView.animate(withDuration: self.animationDuration, animations: { () -> Void in
                     
-                    fromViewController.view.backgroundColor = UIColor.clear()
-                    sourceCollectionViewController.collectionView!.backgroundColor = UIColor.clear()
+                    fromViewController.view.backgroundColor = UIColor.clear
+                    sourceCollectionViewController.collectionView!.backgroundColor = UIColor.clear
                     
                     }, completion: { (finished) -> Void in
                         
-                        transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+                        transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
                 })
                 
                 let destinationPoint = self.calculateDestinationAnimationPoint(sourceCollectionViewController, toViewController: toViewController)
@@ -126,7 +126,7 @@ class CKWaveCollectionViewAnimator: NSObject, UIViewControllerAnimatedTransition
 
     private func addAnimationsToDestinationCollectionView(_ destinationCollectionViewController: UICollectionViewController, sourceCollectionViewController: UICollectionViewController, toViewController: UIViewController) {
         
-        let indexPaths: NSArray = sourceCollectionViewController.collectionView!.indexPathsForSelectedItems()!
+        let indexPaths: NSArray = sourceCollectionViewController.collectionView!.indexPathsForSelectedItems! as NSArray
         let selectedCellIndex: IndexPath = indexPaths.firstObject as! IndexPath
         let selectedCell = sourceCollectionViewController.collectionView!.cellForItem(at: selectedCellIndex)!
         
@@ -139,9 +139,11 @@ class CKWaveCollectionViewAnimator: NSObject, UIViewControllerAnimatedTransition
         
         let rowsAndColumns = destinationCollectionViewController.collectionView!.numberOfVisibleRowsAndColumn()
         
-        if let indexPathsForVisibleCells = destinationCollectionViewController.collectionView?.indexPathsForVisibleItems() {
+        if let indexPathsForVisibleCells = destinationCollectionViewController.collectionView?.indexPathsForVisibleItems {
 
-            let indexPaths = indexPathsForVisibleCells.sorted(isOrderedBefore: { ($0 as NSIndexPath).row < ($1 as NSIndexPath).row })
+            let indexPaths = indexPathsForVisibleCells.sorted(by: { (ip1, ip2) -> Bool in
+                ip1.row < ip2.row
+            })
         
             for (_, index) in indexPaths.enumerated() {
             
@@ -166,8 +168,8 @@ class CKWaveCollectionViewAnimator: NSObject, UIViewControllerAnimatedTransition
         let destination = destinationCollectionViewController.collectionView
         
         if let fromFlowLayout = source?.collectionViewLayout as? UICollectionViewFlowLayout,
-            toFlowLayout = destination?.collectionViewLayout as? UICollectionViewFlowLayout,
-            cellLayoutAttributes = destination?.layoutAttributesForItem(at: cellIndexPath) {
+            let toFlowLayout = destination?.collectionViewLayout as? UICollectionViewFlowLayout,
+            let cellLayoutAttributes = destination?.layoutAttributesForItem(at: cellIndexPath) {
 
             cell.frame.size = fromFlowLayout.itemSize
             cell.center = animateFromPoint
@@ -217,15 +219,17 @@ class CKWaveCollectionViewAnimator: NSObject, UIViewControllerAnimatedTransition
     
     private func setNewFrameToCells(_ destinationCollectionViewController: UICollectionViewController) {
         
-        if let destinationIndexPathsForVisibleCells = destinationCollectionViewController.collectionView?.indexPathsForVisibleItems() {
+        if let destinationIndexPathsForVisibleCells = destinationCollectionViewController.collectionView?.indexPathsForVisibleItems {
 
-            let sortedIndexPaths = destinationIndexPathsForVisibleCells.sorted(isOrderedBefore: { ($0 as NSIndexPath).row < ($1 as NSIndexPath).row })
+            let sortedIndexPaths = destinationIndexPathsForVisibleCells.sorted(by: { (ip1, ip2) -> Bool in
+                ip1.row < ip2.row
+            })
             
             for (_, index) in sortedIndexPaths.enumerated() {
            
                 if let cell = destinationCollectionViewController.collectionView?.cellForItem(at: index),
                 
-                    layoutAttributes = destinationCollectionViewController.collectionView?.layoutAttributesForItem(at: index) {
+                    let layoutAttributes = destinationCollectionViewController.collectionView?.layoutAttributesForItem(at: index) {
             
                         cell.frame = layoutAttributes.frame
                 }
@@ -237,17 +241,19 @@ class CKWaveCollectionViewAnimator: NSObject, UIViewControllerAnimatedTransition
 
         assert(destinationCollectionViewController.selectedIndexPath != nil, "Forgot to set selectedIndexPath property?")
         
-        var sourceIndexPathsForVisibleCells = sourceCollectionViewController.collectionView?.indexPathsForVisibleItems()
-        sourceIndexPathsForVisibleCells = sourceIndexPathsForVisibleCells!.sorted(isOrderedBefore: { ($0 as NSIndexPath).row < ($1 as NSIndexPath).row })
+        var sourceIndexPathsForVisibleCells = sourceCollectionViewController.collectionView?.indexPathsForVisibleItems
+        sourceIndexPathsForVisibleCells = sourceIndexPathsForVisibleCells?.sorted(by: { (ip1, ip2) -> Bool in
+            ip1.row < ip2.row
+        })
         
         let rowsAndColumns = destinationCollectionViewController.collectionView!.numberOfVisibleRowsAndColumn()
         
         for (idx, index) in sourceIndexPathsForVisibleCells!.reversed().enumerated() {
             
             if let cell = sourceCollectionViewController.collectionView?.cellForItem(at: index),
-                _ = sourceCollectionViewController.collectionView?.layoutAttributesForItem(at: index),
-                lastSelectedCell = destinationCollectionViewController.collectionView?.cellForItem(at: destinationCollectionViewController.selectedIndexPath as IndexPath),
-                flowLayout = destinationCollectionViewController.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+                let _ = sourceCollectionViewController.collectionView?.layoutAttributesForItem(at: index),
+                let lastSelectedCell = destinationCollectionViewController.collectionView?.cellForItem(at: destinationCollectionViewController.selectedIndexPath as IndexPath),
+                let flowLayout = destinationCollectionViewController.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
                     
                     cell.layer.zPosition = kTopCellLayerZIndex - CGFloat(idx*self.kDeltaBetweenCellLayers)
                     
@@ -259,10 +265,10 @@ class CKWaveCollectionViewAnimator: NSObject, UIViewControllerAnimatedTransition
     private func setupDestinationViewController(_ destinationVC: UIViewController, context: UIViewControllerContextTransitioning) {
         //set clear color
         if let destinationCollectionViewController = destinationVC as? UICollectionViewController {
-             destinationCollectionViewController.collectionView?.backgroundColor = UIColor.clear()
+             destinationCollectionViewController.collectionView?.backgroundColor = UIColor.clear
         }
         
-        destinationVC.view.backgroundColor = UIColor.clear()
+        destinationVC.view.backgroundColor = UIColor.clear
         destinationVC.view.alpha = 0.0
     }
 

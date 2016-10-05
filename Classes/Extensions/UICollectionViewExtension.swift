@@ -16,7 +16,7 @@ extension UICollectionView {
         var columns = 0
         var currentWidth: CGFloat = 0.0
         
-        let visibleCells = self.visibleCells()
+        let visibleCells = self.visibleCells
         
         for cell in visibleCells {
             
