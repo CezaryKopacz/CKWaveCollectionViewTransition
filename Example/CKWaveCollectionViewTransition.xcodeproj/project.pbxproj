@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ED3335E11B5407B600AAC193 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3335E01B5407B600AAC193 /* AppDelegate.swift */; };
-		ED3335E31B5407B600AAC193 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3335E21B5407B600AAC193 /* ViewController.swift */; };
+		ED3335E31B5407B600AAC193 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3335E21B5407B600AAC193 /* MainViewController.swift */; };
 		ED3335E61B5407B600AAC193 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3335E41B5407B600AAC193 /* Main.storyboard */; };
 		ED3335E81B5407B600AAC193 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED3335E71B5407B600AAC193 /* Images.xcassets */; };
 		ED3335EB1B5407B600AAC193 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED3335E91B5407B600AAC193 /* LaunchScreen.xib */; };
@@ -26,7 +26,7 @@
 		ED3335DB1B5407B600AAC193 /* CKWaveCollectionViewTransition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CKWaveCollectionViewTransition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED3335DF1B5407B600AAC193 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED3335E01B5407B600AAC193 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ED3335E21B5407B600AAC193 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ED3335E21B5407B600AAC193 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		ED3335E51B5407B600AAC193 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED3335E71B5407B600AAC193 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		ED3335EA1B5407B600AAC193 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -51,6 +51,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE9BFF1A234E5DCC00CB9ABE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ED3335E21B5407B600AAC193 /* MainViewController.swift */,
+				ED3336011B54091600AAC193 /* SecondCollectionViewController.swift */,
+				ED3336031B54092800AAC193 /* ThirdCollectionViewController.swift */,
+				EDB72E661B5E46800000CAC3 /* NavigationControllerDelegate.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BE9BFF1B234E5E2B00CB9ABE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ED3335E41B5407B600AAC193 /* Main.storyboard */,
+				ED3335E91B5407B600AAC193 /* LaunchScreen.xib */,
+				ED3335E71B5407B600AAC193 /* Images.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		ED3335D21B5407B600AAC193 = {
 			isa = PBXGroup;
 			children = (
@@ -73,14 +94,9 @@
 				EDB72E611B5E3F090000CAC3 /* Extensions */,
 				ED3336001B5408A400AAC193 /* CKWaveCollectionViewAnimator */,
 				ED3335E01B5407B600AAC193 /* AppDelegate.swift */,
-				ED3335E21B5407B600AAC193 /* ViewController.swift */,
-				ED3335E41B5407B600AAC193 /* Main.storyboard */,
-				ED3335E71B5407B600AAC193 /* Images.xcassets */,
-				ED3335E91B5407B600AAC193 /* LaunchScreen.xib */,
+				BE9BFF1B234E5E2B00CB9ABE /* Resources */,
 				ED3335DE1B5407B600AAC193 /* Supporting Files */,
-				ED3336011B54091600AAC193 /* SecondCollectionViewController.swift */,
-				ED3336031B54092800AAC193 /* ThirdCollectionViewController.swift */,
-				EDB72E661B5E46800000CAC3 /* NavigationControllerDelegate.swift */,
+				BE9BFF1A234E5DCC00CB9ABE /* ViewControllers */,
 			);
 			path = CKWaveCollectionViewTransition;
 			sourceTree = "<group>";
@@ -139,7 +155,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = CezaryKopacz;
 				TargetAttributes = {
 					ED3335DA1B5407B600AAC193 = {
@@ -151,10 +167,9 @@
 			};
 			buildConfigurationList = ED3335D61B5407B600AAC193 /* Build configuration list for PBXProject "CKWaveCollectionViewTransition" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -190,7 +205,7 @@
 				ED3336041B54092800AAC193 /* ThirdCollectionViewController.swift in Sources */,
 				EDF5029F1B642AFD0030780F /* UIViewControllerExtension.swift in Sources */,
 				EDF5029D1B642AFD0030780F /* UICollectionViewControllerExtension.swift in Sources */,
-				ED3335E31B5407B600AAC193 /* ViewController.swift in Sources */,
+				ED3335E31B5407B600AAC193 /* MainViewController.swift in Sources */,
 				EDF5029E1B642AFD0030780F /* UICollectionViewExtension.swift in Sources */,
 				ED3335E11B5407B600AAC193 /* AppDelegate.swift in Sources */,
 				EDF5029C1B642AFD0030780F /* UIApplicationExtension.swift in Sources */,
@@ -229,14 +244,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -277,14 +300,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -320,7 +351,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CezaryKopacz.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = CKWaveCollectionViewTransition;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -335,7 +366,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CezaryKopacz.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = CKWaveCollectionViewTransition;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

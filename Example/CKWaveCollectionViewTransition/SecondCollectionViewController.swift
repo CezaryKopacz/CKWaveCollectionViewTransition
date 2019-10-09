@@ -8,31 +8,35 @@
 
 import UIKit
 
-class SecondCollectionViewController: UICollectionViewController {
+final class SecondCollectionViewController: UICollectionViewController {
 
-    let kThirdVCId = "thirdVC"
-    let kCellId = "cellId"
+    private let kThirdVCId = "thirdVC"
+    private let kCellId = "cellId"
     
-    //MARK :- UICollectionViewDelegate
+    // MARK: - UICollectionViewDelegate
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        self.selectedIndexPath = indexPath
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: kThirdVCId) as? ThirdCollectionViewController
-        self.navigationController?.pushViewController(vc!, animated: true)
+        selectedIndexPath = indexPath
+        guard let secondViewController = storyboard?.instantiateViewController(withIdentifier: kThirdVCId) as? ThirdCollectionViewController else { return }
+        navigationController?.pushViewController(secondViewController, animated: true)
     }
 
-    //MARK :- UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCellId, for: indexPath) 
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 40
+        return Configuration.numberOfItems
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }    
+}
+
+private enum Configuration {
+    static let numberOfItems: Int = 40
 }
