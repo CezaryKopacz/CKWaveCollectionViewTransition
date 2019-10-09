@@ -68,7 +68,7 @@ class CKWaveCollectionViewAnimator: NSObject, UIViewControllerAnimatedTransition
         
         setupDestinationViewController(toViewController, context: transitionContext)
         
-        UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions(), animations: { () -> Void in
+        UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions(), animations: { () -> Void in
             
             //fake empty animation
             }) { (finished) -> Void in
@@ -78,7 +78,7 @@ class CKWaveCollectionViewAnimator: NSObject, UIViewControllerAnimatedTransition
                     toViewController.view.alpha = 1.0
                 })
                 
-                UIView.animate(withDuration: self.animationDuration, delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: { () -> Void in
+                UIView.animate(withDuration: self.animationDuration, delay: 0.0, options: UIView.AnimationOptions.curveLinear, animations: { () -> Void in
                     
                     toViewController.view.backgroundColor = destinationViewControllerViewBackgroundColor
                     
@@ -95,7 +95,7 @@ class CKWaveCollectionViewAnimator: NSObject, UIViewControllerAnimatedTransition
     
     fileprivate func reversedCollectionViewTransition(_ toViewController: UIViewController, fromViewController: UIViewController, transitionContext: UIViewControllerContextTransitioning, sourceCollectionViewController: UICollectionViewController, destinationCollectionViewController: UICollectionViewController)
     {
-        UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions(), animations: { () -> Void in
+        UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions(), animations: { () -> Void in
             
             //fake empty animation
             }) { (finished) -> Void in
@@ -176,7 +176,7 @@ class CKWaveCollectionViewAnimator: NSObject, UIViewControllerAnimatedTransition
             cell.alpha = 1.0
             cell.layer.zPosition = kTopCellLayerZIndex - CGFloat((cellIndexPath as NSIndexPath).row*self.kDeltaBetweenCellLayers)
         
-            UIView.animateKeyframes(withDuration: 1.0, delay: 0, options: UIViewKeyframeAnimationOptions(), animations: { () -> Void in
+            UIView.animateKeyframes(withDuration: 1.0, delay: 0, options: UIView.KeyframeAnimationOptions(), animations: { () -> Void in
             
                 let relativeStartTime = (self.kCellAnimBigDelta*Double((cellIndexPath as NSIndexPath).row % rowsAndColumns.columns))
 
@@ -281,7 +281,7 @@ class CKWaveCollectionViewAnimator: NSObject, UIViewControllerAnimatedTransition
             relativeDuration = self.animationDuration - relativeStartTime
         }
         
-        UIView.animateKeyframes(withDuration: self.animationDuration, delay: 0, options: UIViewKeyframeAnimationOptions(), animations: { () -> Void in
+        UIView.animateKeyframes(withDuration: self.animationDuration, delay: 0, options: UIView.KeyframeAnimationOptions(), animations: { () -> Void in
             
             UIView.addKeyframe(withRelativeStartTime: 0.0 + (self.kCellAnimSmallDelta * Double(cellIndex)), relativeDuration: self.animationDuration - (self.kCellAnimSmallDelta * Double(cellIndex)), animations: { () -> Void in
                 
