@@ -8,19 +8,18 @@
 
 import UIKit
 
-class NavigationControllerDelegate : NSObject, UINavigationControllerDelegate {
-    
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation,
-        from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-            
+final class NavigationControllerDelegate : NSObject, UINavigationControllerDelegate {
+
+    func navigationController(_ navigationController: UINavigationController,
+                              animationControllerFor operation: UINavigationController.Operation,
+                              from fromVC: UIViewController,
+                              to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
             let animator = CKWaveCollectionViewAnimator()
             animator.animationDuration = 0.7
             
-            if operation != UINavigationControllerOperation.push {
-                
+            if operation != UINavigationController.Operation.push {
                 animator.reversed = true
             }
-            
             return animator
     }
 }
