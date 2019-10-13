@@ -9,16 +9,10 @@
 import UIKit
 
 extension UIViewController {
-    
-    func navigationBarHeight() -> CGFloat {
-        
-        let kNavigationBarHeight: CGFloat = 44.0
-        
-        var navigationBarVisible = true
-        if let navigationController = self.navigationController {
-            navigationBarVisible = !navigationController.isNavigationBarHidden
-        }
-        
-        return navigationBarVisible ? kNavigationBarHeight : 0
+    var navigationBarHeight: CGFloat {
+        guard let navigationController = navigationController else { return CGFloat.zero }
+        let navigationBarHeight = navigationController.navigationBar.frame.height
+        let navigationBarVisible =  !navigationController.isNavigationBarHidden
+        return navigationBarVisible ? navigationBarHeight : 0
     }
 }
